@@ -94,12 +94,12 @@
                     <span v-if="currentVariation.variation.availability" :class="'availability tag availability_' + currentVariation.variation.availability.id">
                         <span>
                             ${ currentVariation.variation.availability.names.name }
-                        </span>
+                       TEST </span>
                     </span>
                     
                      <div v-if="new Date(currentVariation.variation.releasedAt) > Date.now()">
     Verfügbar ab: ${ new Date(currentVariation.variation.releasedAt).toLocaleDateString() }
- </div> <div>HALLO</div>
+ </div>
 
                     <div class="row m-y-1">
                         <slot name="BeforeAddToBasket"></slot>
