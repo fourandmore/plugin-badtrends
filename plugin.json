@@ -3,7 +3,7 @@
     "name"              : "Badtrends",
     "marketplaceName"   : {"de": "Badtrends","en": "Badtrends"},
     "description"       : "This is the official Badtrends plugin developed by plentymarkets. Badtrends is the default template plugin for plentymarkets 7 online stores.",
-    "author"            : "plentymarkets GmbH",
+    "author"            : "Steven Resch",
     "license"           : "AGPL-3.0",
     "pluginIcon"        : "icon_plugin_xs.png",
     "price"             : 0.00,
