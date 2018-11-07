@@ -1,0 +1,43 @@
+{
+    "version"           :   "2.16.1",
+    "license"           :   "AGPL-3.0",
+    "name"              :   "Badtrends",
+    "marketplaceName"   :   {"de":"Badtrends2","en":"Badtrends2"},
+    "pluginIcon"        :   "icon_plugin_xs.png",
+    "authorIcon"        :   "icon_author_xs.png",
+    "email"             :   "steven.resch@four-and-more.net",
+    "phone"             :   "*",
+    "description"       :   "A Badtrends theme for Ceres.",
+    "shortDescription"  :   { "de": "Ein Badtrends-Theme für Ceres.", "en": "A Badtrends theme for Ceres." },
+    "namespace"         :   "Badtrends",
+    "author"            :   "Steven Resch",
+    "keywords"          :   ["plentymarkets", "plugins", "layout", "theme", "ceres"],
+    "price"             :   0,
+    "categories"        :   [3518],
+    "type"              :   "theme",
+    "require"           :   ["Ceres"],
+    "serviceProvider"   :   "Badtrends\\Providers\\BadtrendsServiceProvider",
+    "dataProviders"     :
+    [
+        {
+            "key"           :"Badtrends\\Containers\\BadtrendsContainer",
+            "name"          :"Stylesheet",
+            "description"   :"Add changes to the CSS file"
+        },
+        {
+            "key"           :"Badtrends\\Containers\\BadtrendsItemListContainer1",
+            "name"          :"First item list",
+            "description"   :"Display a configurable list of items in your online store"
+        },
+        {
+            "key"           :"Badtrends\\Containers\\BadtrendsItemListContainer2",
+            "name"          :"Second item list",
+            "description"   :"Display a configurable list of items in your online store"
+        },
+        {
+            "key"           :"Badtrends\\Containers\\BadtrendsItemListContainer3",
+            "name"          :"Third item list",
+            "description"   :"Display a configurable list of items in your online store"
+        }
+    ]
+}
