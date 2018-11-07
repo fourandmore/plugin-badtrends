@@ -18,9 +18,9 @@
     "serviceProvider"   : "Badtrends\\Providers\\TemplateServiceProvider",
     "javaScriptFiles"   : [],
     "runOnBuild"        : [
-        "Badtrends\\Migrations\\WebshopSettingsMigration_0_0_1",
-        "Badtrends\\Migrations\\ConfigPropertiesMigration_0_0_1",
-        "Badtrends\\Migrations\\Migration_2018_07_06_001_RebuildShopBuilderHomepage"
+        "Ceres\\Migrations\\WebshopSettingsMigration_0_0_1",
+        "Ceres\\Migrations\\ConfigPropertiesMigration_0_0_1",
+        "Ceres\\Migrations\\Migration_2018_07_06_001_RebuildShopBuilderHomepage"
     ],
     "dataProviders"     :
     [
@@ -45,7 +45,7 @@
         {
             "key"           : "Template.Style",
             "name"          : "Template: Style",
-            "description"   : "Add style to BadtrendsVanillaBadtrends with a theme plugin."
+            "description"   : "Add style to Badtrends with a theme plugin."
         },
         {
             "key"           : "Template.StyleOverwrite",
