@@ -26,17 +26,17 @@
     "dataProviders"     :
     [
         {
-            "key":"Badtrends\\Containers\\CeresItemListContainer1",
+            "key":"Badtrends\\Containers\\BadtrendsItemListContainer1",
             "name":"First item list",
             "description":"Display a configurable list of items in your online store"
         },
         {
-            "key":"Badtrends\\Containers\\CeresItemListContainer2",
+            "key":"Badtrends\\Containers\\BadtrendsItemListContainer2",
             "name":"Second item list",
             "description":"Display a configurable list of items in your online store"
         },
         {
-            "key":"Badtrends\\Containers\\CeresItemListContainer3",
+            "key":"Badtrends\\Containers\\BadtrendsItemListContainer3",
             "name":"Third item list",
             "description":"Display a configurable list of items in your online store"
         }
