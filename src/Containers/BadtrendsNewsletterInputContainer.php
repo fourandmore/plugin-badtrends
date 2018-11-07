@@ -8,6 +8,6 @@ class BadtrendsNewsletterInputContainer
 {
     public function call(Twig $twig)
     {
-        return $twig->render('Badtrends::Containers.Newsletter.ContainerNewsletterInput');
+        return $twig->render('Ceres::Containers.Newsletter.ContainerNewsletterInput');
     }
 }
