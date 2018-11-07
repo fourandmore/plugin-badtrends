@@ -68,7 +68,7 @@ class BadtrendsServiceProvider extends ServiceProvider
     ];
 
     public function register(){
-        $this->getApplication()->singleton( BadtrendsConfig::class );
+        $this->getApplication()->singleton( CeresConfig::class );
     }
     
     public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
@@ -126,6 +126,6 @@ class BadtrendsServiceProvider extends ServiceProvider
 
         }, self::EVENT_LISTENER_PRIORITY);
 
-        $eventDispatcher->listen(AfterBuildPlugins::class, BadtrendsAfterBuildPlugins::class);
+        $eventDispatcher->listen(AfterBuildPlugins::class, CeresAfterBuildPlugins::class);
     }
 }
