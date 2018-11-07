@@ -2,20 +2,20 @@
 
 namespace Badtrends\Providers;
 
-use Badtrends\Caching\NavigationCacheSettings;
-use Badtrends\Caching\SideNavigationCacheSettings;
-use Badtrends\Config\BadtrendsConfig;
-use Badtrends\Contexts\CategoryContext;
-use Badtrends\Contexts\CategoryItemContext;
-use Badtrends\Contexts\GlobalContext;
-use Badtrends\Contexts\ItemSearchContext;
-use Badtrends\Contexts\ItemWishListContext;
-use Badtrends\Contexts\OrderConfirmationContext;
-use Badtrends\Contexts\OrderReturnContext;
-use Badtrends\Contexts\PasswordResetContext;
-use Badtrends\Contexts\SingleItemContext;
-use Badtrends\Extensions\TwigStyleScriptTagFilter;
-use Badtrends\Hooks\BadtrendsAfterBuildPlugins;
+use Ceres\Caching\NavigationCacheSettings;
+use Ceres\Caching\SideNavigationCacheSettings;
+use Ceres\Config\CeresConfig;
+use Ceres\Contexts\CategoryContext;
+use Ceres\Contexts\CategoryItemContext;
+use Ceres\Contexts\GlobalContext;
+use Ceres\Contexts\ItemSearchContext;
+use Ceres\Contexts\ItemWishListContext;
+use Ceres\Contexts\OrderConfirmationContext;
+use Ceres\Contexts\OrderReturnContext;
+use Ceres\Contexts\PasswordResetContext;
+use Ceres\Contexts\SingleItemContext;
+use Ceres\Extensions\TwigStyleScriptTagFilter;
+use Ceres\Hooks\CeresAfterBuildPlugins;
 use IO\Extensions\Functions\Partial;
 use IO\Helper\CategoryKey;
 use IO\Helper\CategoryMap;
@@ -30,7 +30,7 @@ use Plenty\Plugin\ConfigRepository;
 
 /**
  * Class TemplateServiceProvider
- * @package Badtrends\Providers
+ * @package Ceres\Providers
  */
 class TemplateServiceProvider extends ServiceProvider
 {
@@ -68,7 +68,7 @@ class TemplateServiceProvider extends ServiceProvider
     ];
 
     public function register(){
-        $this->getApplication()->singleton( BadtrendsConfig::class );
+        $this->getApplication()->singleton( CeresConfig::class );
     }
     
     public function boot(Twig $twig, Dispatcher $eventDispatcher, ConfigRepository $config)
@@ -81,7 +81,7 @@ class TemplateServiceProvider extends ServiceProvider
             if ( !$templateContainer->hasTemplate() )
             {
                 $templateName = self::$templateKeyToViewMap[$templateContainer->getTemplateKey()][0];
-                $templateContainer->setTemplate('Badtrends::' . $templateName);
+                $templateContainer->setTemplate('Ceres::' . $templateName);
             }
         }, self::EVENT_LISTENER_PRIORITY);
         
@@ -96,36 +96,36 @@ class TemplateServiceProvider extends ServiceProvider
 
         $eventDispatcher->listen( 'IO.ResultFields.*', function(ResultFieldTemplate $templateContainer) {
             $templateContainer->setTemplates([
-                ResultFieldTemplate::TEMPLATE_LIST_ITEM     => 'Badtrends::ResultFields.ListItem',
-                ResultFieldTemplate::TEMPLATE_SINGLE_ITEM   => 'Badtrends::ResultFields.SingleItem',
-                ResultFieldTemplate::TEMPLATE_BASKET_ITEM   => 'Badtrends::ResultFields.BasketItem',
-                ResultFieldTemplate::TEMPLATE_AUTOCOMPLETE_ITEM_LIST => 'Badtrends::ResultFields.AutoCompleteListItem',
-                ResultFieldTemplate::TEMPLATE_CATEGORY_TREE => 'Badtrends::ResultFields.CategoryTree'
+                ResultFieldTemplate::TEMPLATE_LIST_ITEM     => 'Ceres::ResultFields.ListItem',
+                ResultFieldTemplate::TEMPLATE_SINGLE_ITEM   => 'Ceres::ResultFields.SingleItem',
+                ResultFieldTemplate::TEMPLATE_BASKET_ITEM   => 'Ceres::ResultFields.BasketItem',
+                ResultFieldTemplate::TEMPLATE_AUTOCOMPLETE_ITEM_LIST => 'Ceres::ResultFields.AutoCompleteListItem',
+                ResultFieldTemplate::TEMPLATE_CATEGORY_TREE => 'Ceres::ResultFields.CategoryTree'
             ]);
         }, self::EVENT_LISTENER_PRIORITY);
 
         // provide mapped category IDs - DEPRECATED?
         $eventDispatcher->listen('init.categories', function (CategoryMap $categoryMap) use (&$config) {
             $categoryMap->setCategoryMap(array(
-                CategoryKey::HOME => $config->get("Badtrends.global.category.home"),
-                CategoryKey::PAGE_NOT_FOUND => $config->get("Badtrends.global.category.page_not_found"),
-                CategoryKey::ITEM_NOT_FOUND => $config->get("Badtrends.global.category.item_not_found")
+                CategoryKey::HOME => $config->get("Ceres.global.category.home"),
+                CategoryKey::PAGE_NOT_FOUND => $config->get("Ceres.global.category.page_not_found"),
+                CategoryKey::ITEM_NOT_FOUND => $config->get("Ceres.global.category.item_not_found")
             ));
 
         }, self::EVENT_LISTENER_PRIORITY);
 
         $eventDispatcher->listen('IO.init.templates', function (Partial $partial){
 
-            pluginApp(Container::class)->register('Badtrends::PageDesign.Partials.Header.NavigationList.twig', NavigationCacheSettings::class);
-            pluginApp(Container::class)->register('Badtrends::PageDesign.Partials.Header.SideNavigation.twig', SideNavigationCacheSettings::class);
+            pluginApp(Container::class)->register('Ceres::PageDesign.Partials.Header.NavigationList.twig', NavigationCacheSettings::class);
+            pluginApp(Container::class)->register('Ceres::PageDesign.Partials.Header.SideNavigation.twig', SideNavigationCacheSettings::class);
 
-            $partial->set('head', 'Badtrends::PageDesign.Partials.Head');
-            $partial->set('header', 'Badtrends::PageDesign.Partials.Header.Header');
-            $partial->set('footer', 'Badtrends::PageDesign.Partials.Footer');
-            $partial->set('page-design', 'Badtrends::PageDesign.PageDesign');
+            $partial->set('head', 'Ceres::PageDesign.Partials.Head');
+            $partial->set('header', 'Ceres::PageDesign.Partials.Header.Header');
+            $partial->set('footer', 'Ceres::PageDesign.Partials.Footer');
+            $partial->set('page-design', 'Ceres::PageDesign.PageDesign');
 
         }, self::EVENT_LISTENER_PRIORITY);
 
-        $eventDispatcher->listen(AfterBuildPlugins::class, BadtrendsAfterBuildPlugins::class);
+        $eventDispatcher->listen(AfterBuildPlugins::class, CeresAfterBuildPlugins::class);
     }
 }
