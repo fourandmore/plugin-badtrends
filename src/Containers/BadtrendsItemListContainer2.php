@@ -2,7 +2,7 @@
 
 namespace Badtrends\Containers;
 
-use Badtrends\Config\BadtrendsConfig;
+use Ceres\Config\CeresConfig;
 use IO\Services\ItemSearch\SearchPresets\TagItems;
 use IO\Services\ItemSearch\Services\ItemSearchService;
 use Plenty\Plugin\Templates\Twig;
@@ -13,10 +13,10 @@ class BadtrendsItemListContainer2
     {
         $tagList = [];
         
-        /** @var BadtrendsConfig $badtrendsConfig */
-        $badtrendsConfig = pluginApp(BadtrendsConfig::class);
+        /** @var CeresConfig $ceresConfig */
+        $ceresConfig = pluginApp(CeresConfig::class);
     
-        $listType = $badtrendsConfig->itemLists->list2Type;
+        $listType = $ceresConfig->itemLists->list2Type;
     
         if($listType == 'tag_list')
         {
@@ -24,8 +24,8 @@ class BadtrendsItemListContainer2
             $itemSearchService = pluginApp( ItemSearchService::class );
         
             $itemSearchOptions = [
-                'tagIds' => explode(',', $badtrendsConfig->itemLists->list2TagIds),
-                'sorting' => $badtrendsConfig->itemLists->tagSorting
+                'tagIds' => explode(',', $ceresConfig->itemLists->list2TagIds),
+                'sorting' => $ceresConfig->itemLists->tagSorting
             ];
         
             $result = $itemSearchService->getResults([
@@ -38,6 +38,6 @@ class BadtrendsItemListContainer2
             }
         }
         
-        return $twig->render('Badtrends::Containers.ItemLists.ItemList2', ["item" => $arg[0], "itemList" => $tagList]);
+        return $twig->render('Ceres::Containers.ItemLists.ItemList2', ["item" => $arg[0], "itemList" => $tagList]);
     }
 }
