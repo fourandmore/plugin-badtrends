@@ -2,7 +2,7 @@
     "version"           :   "2.16.1",
     "license"           :   "AGPL-3.0",
     "name"              :   "Badtrends",
-    "marketplaceName"   :   {"de":"Badtrends 2","en":"Badtrends 2"},
+    "marketplaceName"   :   {"de":"Badtrends 2","en":"Badtrends 2	"},
     "pluginIcon"        :   "icon_plugin_xs.png",
     "authorIcon"        :   "icon_author_xs.png",
     "email"             :   "steven.resch@four-and-more.net",
@@ -16,7 +16,7 @@
     "categories"        :   [3518],
     "type"              :   "theme",
     "require"           :   ["Ceres"],
-    "serviceProvider"   :   "Badtrends\\Providers\\BadtrendsServiceProvider",
+    "serviceProvider"   :   "Badtrends\\Providers\\TemplateServiceProvider",
     "dataProviders"     :
     [
         {
